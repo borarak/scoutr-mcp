@@ -9,9 +9,13 @@ license = { text = "MIT" }
 authors = [{ name = "Raktim Bora" }]
 
 dependencies = [
+    "alembic>=1.18.4",
+    "asyncpg>=0.31.0",
     "mcp[cli]>=1.27.2",
+    "pgvector>=0.4.2",
     "pydantic>=2.13.4",
     "pydantic-settings>=2.14.1",
+    "sqlalchemy==2.0",
 ]
 
 [dependency-groups]
@@ -19,6 +23,8 @@ dev = [
     "mypy>=2.1.0",
     "pre-commit>=4.6.0",
     "pytest>=9.0.3",
+    "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
     "ruff>=0.15.15",
 ]
 
