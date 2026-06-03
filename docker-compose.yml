@@ -1,0 +1,11 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: scoutr
+      POSTGRES_PASSWORD: scoutr
+      POSTGRES_DB: scoutr
+    ports: ["5432:5432"]
+    volumes: ["scoutr_pgdata:/var/lib/postgresql/data"]
+volumes:
+  scoutr_pgdata:
