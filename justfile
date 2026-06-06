@@ -30,3 +30,15 @@ test:
 
 # Full local gate; run before every PR.
 check: lint typecheck test
+
+# Ingest API data into DB
+ingest:
+    uv run python -c "import asyncio; from scoutr.catalog.ingest import ingest; print(asyncio.run(ingest()))"
+
+# Bring up the DB
+db-up:
+    docker compose up -d db
+
+# Migrations
+migrate:
+    uv run alembic upgrade head

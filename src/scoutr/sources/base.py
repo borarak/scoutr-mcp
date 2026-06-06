@@ -19,7 +19,7 @@ def register(cls: type[JobSource]) -> type[JobSource]:
     return cls
 
 
-def available_source() -> dict[str, type[JobSource]]:
+def available_sources() -> dict[str, type[JobSource]]:
     return dict(_REGISTRY)
 
 

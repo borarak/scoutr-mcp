@@ -15,5 +15,5 @@ class Job(BaseModel):
     location: str = Field(description="Location describing the city or town of the user")
     organisation: str = Field(description="The name of the organisation which posted the job")
     mode: Literal["on-site", "hybrid", "remote"]
-    date_posted: date = Field(description="the date of the job posted in dd-mm-yyyy format")
+    date_posted: str = Field(description="the date of the job posted in dd-mm-yyyy format")
     description: str = Field(description="the description of the job deatailing the requirements")

@@ -6,6 +6,10 @@ import uuid
 
 from mcp.server.fastmcp import FastMCP
 
+from scoutr.db.engine import get_session
+
+from scoutr.catalog.repository import JobRepository
+
 from scoutr.models import Job
 
 mcp = FastMCP()
@@ -34,4 +38,5 @@ FAKE_JOBS: list[Job] = [
 
 @mcp.tool()
 async def search_jobs(query: str) -> list[Job]:
-    return FAKE_JOBS
+    async with get_session() as session:
+        return await JobRepository(session).search(query)
