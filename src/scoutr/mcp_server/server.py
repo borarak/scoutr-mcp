@@ -6,10 +6,8 @@ import uuid
 
 from mcp.server.fastmcp import FastMCP
 
-from scoutr.db.engine import get_session
-
 from scoutr.catalog.repository import JobRepository
-
+from scoutr.db.engine import get_session
 from scoutr.models import Job
 
 mcp = FastMCP()

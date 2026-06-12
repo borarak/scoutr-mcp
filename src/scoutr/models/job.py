@@ -4,8 +4,6 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-from datetime import date
-
 
 class Job(BaseModel):
     """Store the entire details of a job"""
@@ -16,4 +14,4 @@ class Job(BaseModel):
     organisation: str = Field(description="The name of the organisation which posted the job")
     mode: Literal["on-site", "hybrid", "remote"]
     date_posted: str = Field(description="the date of the job posted in dd-mm-yyyy format")
-    description: str = Field(description="the description of the job deatailing the requirements")
+    description: str = Field(description="the description of the job detailing the requirements")

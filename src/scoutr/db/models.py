@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 from datetime import date, datetime
-from pgvector.sqlalchemy import Vector
 
+from pgvector.sqlalchemy import Vector  # type: ignore[import-untyped]
 from sqlalchemy import DateTime, String, Text, UniqueConstraint, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
-
-EMBEDDING_DIM = 1536 # openai/text-embedding-small -> latge: 3072
+EMBEDDING_DIM = 1536  # openai/text-embedding-small -> large: 3072
 
 
 class Base(DeclarativeBase):

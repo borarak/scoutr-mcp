@@ -1,4 +1,4 @@
-from scoutr.catalog.ingest import normalize, ingest
 from scoutr.catalog import repository
+from scoutr.catalog.ingest import ingest, normalize
 
-__all__ = ['normalize', 'ingest', 'repository']
+__all__ = ["ingest", "normalize", "repository"]

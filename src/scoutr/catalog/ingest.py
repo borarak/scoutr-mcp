@@ -1,16 +1,15 @@
 from __future__ import annotations
 
-import uuid
 import logging
+import uuid
 
 from scoutr.catalog.repository import JobRepository
 from scoutr.db.engine import get_session
-from scoutr.sources.base import available_sources
 from scoutr.models import Job
+from scoutr.sources.base import available_sources
 from scoutr.sources.models import RawPosting
 
 log = logging.getLogger(__name__)
-
 
 
 # Fixed namespace: same (source, external_id) always yields the same catalog id.
@@ -58,6 +57,6 @@ async def ingest(query: str = "") -> int:
                     continue
                 await repo.upsert(job, source=raw.source, external_id=raw.external_id)
                 count += 1
-    
-    log.info(f"We ingested a total of {count} job posts")
+
+    log.info("Ingested %d job posts", count)
     return count

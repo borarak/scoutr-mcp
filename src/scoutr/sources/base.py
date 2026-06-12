@@ -1,8 +1,10 @@
 from __future__ import annotations
-from abc import ABC, abstractmethod
-from scoutr.sources.models import RawPosting
 
 import logging
+from abc import ABC, abstractmethod
+
+from scoutr.sources.models import RawPosting
+
 log = logging.getLogger(__name__)
 
 
@@ -30,6 +32,5 @@ class JobSource(ABC):
 
     @abstractmethod
     async def search(self, query: str) -> list[RawPosting]:
-        """Return raw posting from a job baord"""
+        """Return raw posting from a job board"""
         ...
-        

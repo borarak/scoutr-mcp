@@ -17,14 +17,22 @@ class JobRepository:
     async def upsert(self, job: Job, *, source: str, external_id: str) -> None:
         """Insert or update on (source, external_id) — idempotent re-ingest."""
         values = {
-            "job_id": job.job_id, "source": source, "external_id": external_id,
-            "title": job.title, "organisation": job.organisation,
-            "location": job.location, "mode": job.mode, "description": job.description,
+            "job_id": job.job_id,
+            "source": source,
+            "external_id": external_id,
+            "title": job.title,
+            "organisation": job.organisation,
+            "location": job.location,
+            "mode": job.mode,
+            "description": job.description,
         }
-        stmt = pg_insert(JobRow).values(**values)
+        stmt = pg_insert(JobRow).values(**values)  # type: ignore[no-untyped-call]
         stmt = stmt.on_conflict_do_update(
             constraint="uq_jobs_source_external_id",
-            set_={k: stmt.excluded[k] for k in ("title", "organisation", "location", "mode", "description")},
+            set_={
+                k: stmt.excluded[k]
+                for k in ("title", "organisation", "location", "mode", "description")
+            },
         )
         await self._session.execute(stmt)
 
@@ -40,8 +48,11 @@ class JobRepository:
     @staticmethod
     def _to_job(row: JobRow) -> Job:
         return Job(
-            job_id=row.job_id, title=row.title, organisation=row.organisation,
-            location=row.location, mode=row.mode,  # type: ignore[arg-type]
+            job_id=row.job_id,
+            title=row.title,
+            organisation=row.organisation,
+            location=row.location,
+            mode=row.mode,  # type: ignore[arg-type]
             date_posted=row.posted_at.strftime("%d.%m.%Y") if row.posted_at else "",
             description=row.description,
         )

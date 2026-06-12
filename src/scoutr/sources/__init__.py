@@ -1,3 +1,3 @@
 from scoutr.sources.remoteok import RemoteOKSource
 
-__all__ = ['RemoteOKSource']
+__all__ = ["RemoteOKSource"]

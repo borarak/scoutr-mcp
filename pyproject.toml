@@ -15,7 +15,7 @@ dependencies = [
     "pgvector>=0.4.2",
     "pydantic>=2.13.4",
     "pydantic-settings>=2.14.1",
-    "sqlalchemy==2.0",
+    "sqlalchemy>=2.0,<2.1",
 ]
 
 [dependency-groups]
@@ -52,16 +52,12 @@ select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF", "ANN", "ASYNC"]
 # Type checking
 # ---------------------------------------------------------------------------
 [tool.mypy]
+files = ["src"]
 python_version = "3.12"
 strict = true
 warn_unused_configs = true
 warn_unused_ignores = false
 plugins = ["pydantic.mypy"]
-
-[[tool.mypy.overrides]]
-module = "tests.*"
-disallow_any_generics = false
-warn_return_any = false
 
 # ---------------------------------------------------------------------------
 # Tests + coverage
